@@ -18,6 +18,7 @@ namespace ServiceLocator.Locator
 	}
 	
 	/// <inheritdoc />
+	[Service(typeof(object), RegistrationType = ServiceLifetime.Singleton)]
 	public class ServiceLocator : IServiceLocator
 	{
 		private readonly IServiceDiscoveryManager _serviceDiscoveryManager;
