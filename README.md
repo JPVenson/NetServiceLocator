@@ -1,5 +1,9 @@
 # NetServiceLocator
 
+Nuget:
+https://www.nuget.org/packages/NetServiceLocator/1.0.0
+
+
 How to use the NetServiceLocator?
 
 The code is seperated into 3 parts:
