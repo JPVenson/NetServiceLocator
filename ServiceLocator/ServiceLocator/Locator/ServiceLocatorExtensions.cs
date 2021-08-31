@@ -26,7 +26,7 @@ namespace ServiceLocator.Locator
 		/// <returns></returns>
 		public static IServiceLocator UseServiceLocator(this IServiceCollection serviceCollection)
 		{
-			return new ServiceLocator(serviceCollection.UseDiscovery().UseDiscoverServicesFromAppDomain());
+			return new ServiceLocator(serviceCollection.UseDiscovery().DiscoverFromAppDomain());
 		}
 	}
 }

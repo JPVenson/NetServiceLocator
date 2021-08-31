@@ -16,7 +16,7 @@ namespace ServiceLocator.Discovery
 		/// </summary>
 		/// <param name="services"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager UseDiscovery(this IServiceCollection services)
+		public static IServiceDiscoveryManager UseServiceDiscovery(this IServiceCollection services)
 		{
 			return new ServiceDiscoveryManager(services);
 		}
@@ -26,7 +26,7 @@ namespace ServiceLocator.Discovery
 		/// </summary>
 		/// <param name="discovery"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager UseDiscoverServicesFromAppDomain(this IServiceDiscoveryManager discovery)
+		public static IServiceDiscoveryManager DiscoverFromAppDomain(this IServiceDiscoveryManager discovery)
 		{
 			discovery.AddDiscovery(new AppDomainServiceDiscovery());
 			return discovery;
@@ -37,7 +37,7 @@ namespace ServiceLocator.Discovery
 		/// </summary>
 		/// <param name="discovery"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager UseDiscoverServicesFromAppDomain(this IServiceDiscoveryManager discovery, Func<AppDomainServiceDiscoveryOptions, AppDomainServiceDiscoveryOptions> options)
+		public static IServiceDiscoveryManager DiscoverFromAppDomain(this IServiceDiscoveryManager discovery, Func<AppDomainServiceDiscoveryOptions, AppDomainServiceDiscoveryOptions> options)
 		{
 			discovery.AddDiscovery(new AppDomainServiceDiscovery(options(new AppDomainServiceDiscoveryOptions())));
 			return discovery;
@@ -49,7 +49,7 @@ namespace ServiceLocator.Discovery
 		/// <param name="discovery"></param>
 		/// <param name="assembly"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager UseDiscoverServicesFromAssembly(this IServiceDiscoveryManager discovery, Assembly assembly)
+		public static IServiceDiscoveryManager DiscoverFromAssembly(this IServiceDiscoveryManager discovery, Assembly assembly)
 		{
 			discovery.AddDiscovery(new AssemblyServiceDiscovery(assembly));
 			return discovery;
@@ -61,7 +61,7 @@ namespace ServiceLocator.Discovery
 		/// <param name="discovery"></param>
 		/// <param name="types"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager UseDiscoverServicesFromTypes(this IServiceDiscoveryManager discovery, IEnumerable<Type> types)
+		public static IServiceDiscoveryManager DiscoverTypes(this IServiceDiscoveryManager discovery, IEnumerable<Type> types)
 		{
 			discovery.AddDiscovery(new TypesServiceDiscovery(types));
 			return discovery;
