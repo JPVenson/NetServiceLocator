@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace ServiceLocator.Attributes
 {
 	/// <summary>
-	///		Declares a new Service that should be imported as a Scoped Service
+	///		Declares a new Service that should be imported as a <see cref="ServiceLifetime.Transient"/> Service
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
 	public class TransientServiceAttribute : ServiceAttribute

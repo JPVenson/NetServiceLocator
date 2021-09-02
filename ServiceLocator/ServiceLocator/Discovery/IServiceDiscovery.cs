@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ServiceLocator.Discovery
 {
@@ -9,10 +9,9 @@ namespace ServiceLocator.Discovery
 	public interface IServiceDiscovery
 	{
 		/// <summary>
-		///		Loads services that matches the given <see cref="filter"/>
+		///		Loads types that should be discovered
 		/// </summary>
-		/// <param name="filter">A filter that checks for the presence of any of the <see cref="Attributes.ServiceAttribute"/></param>
-		/// <returns>A list of types that should be evaluated by the <see cref="Locator.IServiceLocator"/></returns>
-		IEnumerable<Type> DiscoverTypes(Func<Type, bool> filter);
+		/// <returns>A list of services</returns>
+		IEnumerable<ServiceDescriptor> DiscoverServices(IServiceDiscoveryManager locator);
 	}
 }

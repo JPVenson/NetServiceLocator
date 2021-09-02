@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using ServiceLocator.Attributes;
 
 namespace ServiceLocator.Discovery
 {
-	/// <summary>
-	/// 
-	/// </summary>
+	/// <inheritdoc />
 	public class ServiceDiscoveryManager : IServiceDiscoveryManager
 	{
-		/// <inheritdoc />
-		public IServiceCollection ServiceCollection { get; }
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -22,26 +14,22 @@ namespace ServiceLocator.Discovery
 		public ServiceDiscoveryManager(IServiceCollection serviceCollection)
 		{
 			ServiceCollection = serviceCollection;
-			_discoveries = new List<IServiceDiscovery>();
-		}
-
-		private readonly IList<IServiceDiscovery> _discoveries;
-		
-		/// <inheritdoc />
-		public IEnumerable<Type> DiscoverTypes()
-		{
-			return _discoveries.SelectMany(e => e.DiscoverTypes(FilterType));
-		}
-
-		private bool FilterType(Type arg)
-		{
-			return arg.GetCustomAttribute<ServiceAttribute>(false) != null;
+			ServiceTypes = new List<IServiceDiscovery>();
 		}
 		
 		/// <inheritdoc />
-		public void AddDiscovery(IServiceDiscovery discovery)
+		public IServiceCollection ServiceCollection { get; }
+		
+		/// <inheritdoc />
+		public IList<IServiceDiscovery> ServiceTypes { get; }
+		
+		/// <inheritdoc />
+		public void LocateServices()
 		{
-			_discoveries.Add(discovery);
+			foreach (var serviceDescriptor in ServiceTypes.SelectMany(e => e.DiscoverServices(this)))
+			{
+				ServiceCollection.Add(serviceDescriptor);
+			}
 		}
 	}
 }

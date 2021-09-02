@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ServiceLocator.Discovery
@@ -10,20 +9,19 @@ namespace ServiceLocator.Discovery
 	public interface IServiceDiscoveryManager
 	{
 		/// <summary>
-		///		The target <see cref="IServiceCollection"/> the <see cref="Locator.IServiceLocator"/> should import the Services into
+		///		The target of the Service injection
 		/// </summary>
 		IServiceCollection ServiceCollection { get; }
 
 		/// <summary>
-		///		Returns a list of all <see cref="Type"/> that can be imported as a Service
+		///		Gets a list of all <see cref="IServiceDiscovery"/>
 		/// </summary>
 		/// <returns></returns>
-		IEnumerable<Type> DiscoverTypes();
+		IList<IServiceDiscovery> ServiceTypes { get; }
 
 		/// <summary>
-		///		Adds a new <see cref="IServiceDiscovery"/> to its list
+		///		Imports all types from <see cref="ServiceTypes"/> into <see cref="ServiceCollection"/>
 		/// </summary>
-		/// <param name="discovery"></param>
-		void AddDiscovery(IServiceDiscovery discovery);
+		void LocateServices();
 	}
 }

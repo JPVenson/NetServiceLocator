@@ -30,13 +30,18 @@ namespace ServiceLocator.Attributes
 		/// </summary>
 		public ServiceLifetime RegistrationType { get; set; }
 
+		public static bool HasServiceDescriptor(Type type)
+		{
+			return type.GetCustomAttribute<ServiceAttribute>(false) != null;
+		}
+
 		internal IEnumerable<ServiceDescriptor> GetDescriptors(Type declaringType)
 		{
 			return GetRegistrations(declaringType);
 		}
 
 		/// <summary>
-		///		Enumerates all <see cref="ServiceDescriptor"/> for the <see cref="declaringType"/>
+		///		Enumerates all <see cref="ServiceDescriptor"/> for the <see cref="declaringType"/> as declared with any <see cref="ServiceAttribute"/>
 		/// </summary>
 		/// <param name="declaringType"></param>
 		/// <returns></returns>
