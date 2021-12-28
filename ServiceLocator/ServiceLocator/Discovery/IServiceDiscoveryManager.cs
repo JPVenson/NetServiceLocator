@@ -22,6 +22,6 @@ namespace ServiceLocator.Discovery
 		/// <summary>
 		///		Imports all types from <see cref="ServiceTypes"/> into <see cref="ServiceCollection"/>
 		/// </summary>
-		void LocateServices();
+		IServiceCollection LocateServices();
 	}
 }

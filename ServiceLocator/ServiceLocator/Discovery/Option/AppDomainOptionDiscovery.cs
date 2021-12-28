@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ServiceLocator.Discovery.Options;
+using Microsoft.Extensions.Configuration;
+using ServiceLocator.Discovery.Service.Options;
 
-namespace ServiceLocator.Discovery
+namespace ServiceLocator.Discovery.Option
 {
 	/// <summary>
 	///		Discovers Services that annotates <see cref="ServiceLocator.Attributes.ServiceAttribute"/> in all currently loaded assemblies
 	/// </summary>
-	public class AppDomainServiceDiscovery : TypeBasedServiceDiscovery
+	public class AppDomainOptionDiscovery : TypeBasedOptionDiscovery
 	{
 		private readonly AppDomainServiceDiscoveryOptions _discoveryOptions;
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public AppDomainServiceDiscovery() : this(new AppDomainServiceDiscoveryOptions())
+		public AppDomainOptionDiscovery(IConfiguration configuration) : this(new AppDomainServiceDiscoveryOptions(), configuration)
 		{
 			
 		}
@@ -24,7 +25,8 @@ namespace ServiceLocator.Discovery
 		/// 
 		/// </summary>
 		/// <param name="discoveryOptions"></param>
-		public AppDomainServiceDiscovery(AppDomainServiceDiscoveryOptions discoveryOptions)
+		/// <param name="configuration"></param>
+		public AppDomainOptionDiscovery(AppDomainServiceDiscoveryOptions discoveryOptions, IConfiguration configuration) : base(configuration)
 		{
 			_discoveryOptions = discoveryOptions;
 		}

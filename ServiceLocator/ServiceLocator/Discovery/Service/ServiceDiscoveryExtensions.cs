@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using ServiceLocator.Discovery.Options;
+using ServiceLocator.Discovery.Service.Options;
 
-namespace ServiceLocator.Discovery
+namespace ServiceLocator.Discovery.Service
 {
 	/// <summary>
 	///		
@@ -26,7 +26,7 @@ namespace ServiceLocator.Discovery
 		/// </summary>
 		/// <param name="discovery"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager DiscoverFromAppDomain(this IServiceDiscoveryManager discovery)
+		public static IServiceDiscoveryManager FromAppDomain(this IServiceDiscoveryManager discovery)
 		{
 			discovery.ServiceTypes.Add(new AppDomainServiceDiscovery());
 			return discovery;
@@ -37,7 +37,7 @@ namespace ServiceLocator.Discovery
 		/// </summary>
 		/// <param name="discovery"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager DiscoverFromAppDomain(this IServiceDiscoveryManager discovery, Func<AppDomainServiceDiscoveryOptions, AppDomainServiceDiscoveryOptions> options)
+		public static IServiceDiscoveryManager FromAppDomain(this IServiceDiscoveryManager discovery, Func<AppDomainServiceDiscoveryOptions, AppDomainServiceDiscoveryOptions> options)
 		{
 			discovery.ServiceTypes.Add(new AppDomainServiceDiscovery(options(new AppDomainServiceDiscoveryOptions())));
 			return discovery;
@@ -49,7 +49,7 @@ namespace ServiceLocator.Discovery
 		/// <param name="discovery"></param>
 		/// <param name="assembly"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager DiscoverFromAssembly(this IServiceDiscoveryManager discovery, Assembly assembly)
+		public static IServiceDiscoveryManager FromAssembly(this IServiceDiscoveryManager discovery, Assembly assembly)
 		{
 			discovery.ServiceTypes.Add(new AssemblyServiceDiscovery(assembly));
 			return discovery;
@@ -62,7 +62,7 @@ namespace ServiceLocator.Discovery
 		///  <param name="assembly"></param>
 		///  <param name="options"></param>
 		///  <returns></returns>
-		public static IServiceDiscoveryManager DiscoverFromAssembly(this IServiceDiscoveryManager discovery, Assembly assembly, Func<AssemblyServiceDiscoveryOptions, AssemblyServiceDiscoveryOptions> options)
+		public static IServiceDiscoveryManager FromAssembly(this IServiceDiscoveryManager discovery, Assembly assembly, Func<AssemblyServiceDiscoveryOptions, AssemblyServiceDiscoveryOptions> options)
 		{
 			discovery.ServiceTypes.Add(new AssemblyServiceDiscovery(assembly, options(new AssemblyServiceDiscoveryOptions())));
 			return discovery;
@@ -74,7 +74,7 @@ namespace ServiceLocator.Discovery
 		/// <param name="discovery"></param>
 		/// <param name="types"></param>
 		/// <returns></returns>
-		public static IServiceDiscoveryManager DiscoverTypes(this IServiceDiscoveryManager discovery, IEnumerable<Type> types)
+		public static IServiceDiscoveryManager FromTypes(this IServiceDiscoveryManager discovery, IEnumerable<Type> types)
 		{
 			discovery.ServiceTypes.Add(new ServiceTypesDiscovery(types));
 			return discovery;

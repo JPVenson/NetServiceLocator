@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ServiceLocator.Discovery
+namespace ServiceLocator.Discovery.Service
 {
 	/// <inheritdoc />
 	public class ServiceDiscoveryManager : IServiceDiscoveryManager
@@ -24,12 +24,14 @@ namespace ServiceLocator.Discovery
 		public IList<IServiceDiscovery> ServiceTypes { get; }
 		
 		/// <inheritdoc />
-		public void LocateServices()
+		public IServiceCollection LocateServices()
 		{
 			foreach (var serviceDescriptor in ServiceTypes.SelectMany(e => e.DiscoverServices(this)))
 			{
 				ServiceCollection.Add(serviceDescriptor);
 			}
+
+			return ServiceCollection;
 		}
 	}
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using ServiceLocator.Discovery.Options;
+using ServiceLocator.Discovery.Service.Options;
 
-namespace ServiceLocator.Discovery
+namespace ServiceLocator.Discovery.Service
 {
 	/// <summary>
 	///		Loads all types from the given <see cref="Assembly"/>

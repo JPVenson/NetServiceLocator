@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ServiceLocator.Discovery.Options;
 
-namespace ServiceLocator.Discovery
+namespace ServiceLocator.Discovery.Service
 {
 	/// <summary>
 	///		Loads all types that are set in its constructor

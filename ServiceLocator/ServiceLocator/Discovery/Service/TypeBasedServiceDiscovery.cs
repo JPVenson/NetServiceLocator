@@ -5,7 +5,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceLocator.Attributes;
 
-namespace ServiceLocator.Discovery
+namespace ServiceLocator.Discovery.Service
 {
 	/// <summary>
 	///		Can be used as a base class that works with Types annotated by a <see cref="ServiceAttribute"/>

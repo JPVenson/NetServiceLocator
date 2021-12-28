@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace ServiceLocator.Discovery.Options
+namespace ServiceLocator.Discovery.Service.Options
 {
 	/// <summary>
 	/// 

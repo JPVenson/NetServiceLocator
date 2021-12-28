@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServiceLocator.Discovery.Options
+namespace ServiceLocator.Discovery.Service.Options
 {
 	/// <summary>
 	/// 
