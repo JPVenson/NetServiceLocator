@@ -56,12 +56,10 @@ After you discovered your services you Locate your services and import them into
 
 ```csharp
 using ServiceLocator.Discovery;
-using ServiceLocator.Locator;
 public void ConfigureServices(IServiceCollection services)
 {
   services.UseServiceDiscovery()
   ...
-  .UseServiceLocator() 
   .LocateServices() //this imports all services into IServiceCollection
 }
 ```
